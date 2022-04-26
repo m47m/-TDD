@@ -3,6 +3,7 @@ from selenium import webdriver
 import unittest
 import time
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
 
 class NewVisitorTest(unittest.TestCase):
 	def setUp(self):
@@ -15,7 +16,8 @@ class NewVisitorTest(unittest.TestCase):
 
 
 		self.assertIn('To-Do',self.browser.title)
-		header_text = self.browser.find_element_by_tag_name('h1').text
+		#header_text = self.browser.find_element_by_tag_name('h1').text
+		header_text = self.browser.find_element(By.TAG_NAME,'h1').text
 		self.assertIn('To-Do',header_text)
 
 		inputbox = self.browser.find_element_by_id('id_new_item')
