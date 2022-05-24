@@ -1,13 +1,16 @@
-from typing_extensions import Self
-from urllib import response
+# from typing_extensions import Self
+# from urllib import response
 #from matplotlib.pyplot import table
 from selenium import webdriver
-import unittest
+# import unittest
 import time
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.by import By
+# from selenium.webdriver.common.by import By
 
-class NewVisitorTest(unittest.TestCase):
+from django.test import LiveServerTestCase
+
+
+class NewVisitorTest(LiveServerTestCase):
 	def setUp(self):
 		self.browser = webdriver.Firefox()
 	def tearDown(self):
@@ -19,8 +22,9 @@ class NewVisitorTest(unittest.TestCase):
 		self.assertIn(row_text,[row.text for row in rows])
 
 	def test_can_start_a_list_and_retrieve_it_later(self):
-		self.browser.get('http://localhost:8000')
+		# self.browser.get('http://localhost:8000')
 
+		self.browser.get(self.live_server_url)
 
 		inputbox = self.browser.find_element_by_id('id_new_item')
 		inputbox.send_keys('Buy peacock feathers')
@@ -39,5 +43,5 @@ class NewVisitorTest(unittest.TestCase):
 		self.fail('finish the test')
 	
 
-if __name__ == '__main__':
-	unittest.main(warnings='ignore')
+# if __name__ == '__main__':
+# 	unittest.main(warnings='ignore')
