@@ -1,2 +1,2 @@
 django==1.11
-pip3 freeze | grep gunicorn
+gunicorn==20.1.0
