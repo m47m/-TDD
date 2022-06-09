@@ -1,0 +1,11 @@
+[Unit]
+Description=Gunicorn server for 37.107.110.80
+
+[Service]
+Restart=on-failure
+User=mhl
+WorkingDirectory=/home/mhl/sites/39.107.110.80/source
+ExecStart=/home/mhl/sites/39.107.110.80/virtualenv/bin/gunicorn --bind unix:/temp/39.107.110.80.socket superlists.wsgi:application
+
+[Install]
+WantedBy=muliti-user.target
